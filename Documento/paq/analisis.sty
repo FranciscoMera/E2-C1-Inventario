@@ -1,0 +1,67 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{paq/analisis}[2017/06/24 Paquete para la incorporación de entornos de trabajo para casos de uso e interfaces]
+
+\RequirePackage{paq/negocio}
+
+%Figuras
+\newcommand{\UCsist}{\raisebox{-1mm}{\includegraphics[height=10pt]{Plantilla/iconos/cu}}}
+\newcommand{\UCactor}{\raisebox{-1mm}{\includegraphics[height=10pt]{Plantilla/iconos/actor}}}
+
+\newcommand{\varCurrentIdFin}{}
+\newcounter{counterUC}
+
+%===============================
+\newenvironment{CasodeUso}[3]{%
+	\section{#1 #2}%
+	\hypertarget{#1}{}%
+	\addtocounter{counterUC}{1}%
+	
+	\subsection{Resumen}%
+	#3%
+	
+	\begin{longtable}{| p{0.19\textwidth}| p{0.7\textwidth}|}%
+        	\hline%
+			\rowcolor{sectionColor}%
+			\multicolumn{2}{|c|}{\bf \color{white}{#1 #2}}\\%
+			\hline%
+			\endhead%
+}{\end{longtable}\subsection{Trayectorias del Caso de Uso}}
+
+\newcommand{\UCsection}[1]{
+	\rowcolor{sectionColor}%
+	\multicolumn{2}{|c|}{\bf \color{white}{#1}}%
+	\\\hline}
+	
+\newcommand{\UCitem}[2]{\bf #1 & #2 \\\hline}
+
+%===================================
+
+
+\newenvironment{UCTrayectoria}{
+	\subsubsection{Trayectoria Principal}
+	\renewcommand{\labelenumi}{\textcolor{black}{\bf \theenumi}}
+	\begin{enumerate}\addtolength{\itemsep}{-0.5\baselineskip}
+}{\item[- -] - - {\em Fin del caso de uso}. 
+\end{enumerate}
+\renewcommand{\labelenumi}{\theenumi}%
+}
+
+\newcommand{\UCpaso}[1][\UCsist]{\item {#1}}
+
+
+\newenvironment{UCTrayectoriaA}[3][Fin de la trayectoria]{
+	\subsubsection{Trayectoria Alternativa #2}
+	\renewcommand{\varCurrentIdFin}{#1}
+	\hypertarget{tray:\arabic{counterUC}#2}{}
+	\small{\em \bf Condición:}{\em  #3}
+	\renewcommand{\labelenumi}{\textcolor{black}{\bf \theenumi}}
+	\begin{enumerate}\addtolength{\itemsep}{-0.5\baselineskip}
+}{
+\item[- -] - - {\em \varCurrentIdFin}
+\end{enumerate}}%
+%\renewcommand{\labelenumi}{\theenumi}%}
+
+\newcommand{\refTray}[1]{%
+	%
+	\hyperlink{tray:\arabic{counterUC}#1}{ $[$Trayectoria  #1$]$}%
+}

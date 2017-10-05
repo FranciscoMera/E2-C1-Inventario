@@ -1,0 +1,266 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{paq/personal.sty}[2017/06/24 Paquete Personal para plantillas]
+
+%Fuente del documento
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage[spanish]{babel}
+\usepackage{cmbright}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{wallpaper}
+\usepackage{longtable}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[hmargin=2cm,vmargin=3.5cm,head=2cm]{geometry}
+\usepackage[Sonny]{fncychap}
+\usepackage{marvosym}
+\usepackage{xcolor}
+\usepackage[colorlinks]{hyperref}
+
+
+%======Colores
+
+\definecolor{titleColor}{HTML}{4b0082}
+\definecolor{subTitleColor}{HTML}{4b0082}
+\definecolor{authorColor}{HTML}{4b0082}
+\definecolor{sectionColor}{HTML}{4b0082}
+\definecolor{subsectionColor}{HTML}{4b0082}
+\definecolor{instruccionesColor}{HTML}{6C132B}
+\definecolor{colorPrincipal}{HTML}{4b0082}
+\definecolor{colorSecundario}{HTML}{4b0082}
+\definecolor{colorAgua}{HTML}{4b0082}
+\definecolor{links}{HTML}{132B6C}
+\definecolor{tabla}{HTML}{820078}
+\definecolor{ap}{HTML}{006600}
+\definecolor{rej}{HTML}{FF0000}
+\definecolor{to}{HTML}{5B57CC}
+\definecolor{notacion}{HTML}{ede5f2}
+
+
+\hypersetup{
+	linkcolor = links,
+	urlcolor = links,
+	colorlinks = true,
+}
+\pagestyle{fancy}
+
+%=======Encabezados
+\fancyhead[LE]{\includegraphics[height =35pt]{Plantilla/imgHeaders/head}}
+\fancyhead[RO]{\includegraphics[height=35pt]{Plantilla/imgHeaders/headL}}
+\fancyhead[RE]{}
+\fancyhead[LO]{}
+
+%=======Pie de Pàgina
+\fancyfoot[CO,CE]{}
+\fancyfoot[RO,LE]{\footnotesize\thepage}
+
+
+
+%======Titulos
+\newcommand{\varSubTitle}{}
+\newcommand{\subtitle}[1]{\renewcommand{\varSubTitle}{#1}}
+
+\newcommand{\varTitle}[1]{}
+\let\varTitle=\title
+\renewcommand{\title}[1]{%	
+	\varTitle{{\Huge\color{titleColor}#1}%
+	\\{\LARGE \color{subTitleColor}\varSubTitle}~{}\bigskip\\\color{authorColor}\rule{\textwidth}{1mm}}%
+}
+
+
+\newcommand{\varAuthor}[1]{}
+\let\varAuthor=\author
+\renewcommand{\author}[1]{%
+	\varAuthor{\color{authorColor}#1\\}%
+}
+
+\renewcommand{\labelitemi}{\color{sectionColor}\textbullet}
+
+%=====================================================
+
+\newcommand{\varPart}[1]{}
+\let\varPart=\part
+\renewcommand{\part}[1]{{\color{sectionColor}\varPart{#1}}}
+
+
+\newcommand{\varSection}[1]{}
+\let\varSection=\section
+\renewcommand{\section}[1]{{\color{sectionColor}\varSection{#1}}}
+
+
+\newcommand{\varSubSection}[1]{}
+\let\varSubSection=\subsection
+\renewcommand{\subsection}[1]{{\color{subsectionColor}\varSubSection{#1}}}
+
+\ChTitleVar{\Large\sf\color{titleColor}}
+\ChNumVar{\Huge\color{subTitleColor}}
+\ChNameVar{\Large\sf\color{subTitleColor}}
+
+
+%%%%%Comando para viñetas dentro de tablas
+\newenvironment{Titemize}{\vspace{-.8em}}{\vspace{0em}}
+
+\newcommand{\Titem}[1][\textbullet]{%
+	\par{ \color{sectionColor}{#1} }%
+}
+
+%Project Charter
+\newcommand{\varLider}[1]{#1}
+\newcommand{\lider}[1]{\renewcommand{\varLider}{#1}}
+
+\newcommand{\varAprueba}[1]{#1}
+\newcommand{\aprueba}[1]{\renewcommand{\varAprueba}{#1}}
+
+\newcommand{\makeProjectCharter}{%	
+	{\centering}
+	\begin{center}%
+		\begin{longtable}[hbtp!]{|p {0.3\textwidth} |p {0.65\textwidth} |}%
+			\hline%
+			\rowcolor{sectionColor}
+			\multicolumn{2}{|c|}{\bf \color{white}{Project Charter}}\\ \hline%
+			\endhead%
+            \bf Nombre del Proyecto: & RECOVER-Aplicación para el rastreo, localización y backup de información de un dispositivo móvil\\
+            \hline
+            \bf Fecha de Inicio: & 16 de Agosto de 2017\\
+            \hline
+            \bf Fecha Final : & 12 de Diciembre del 2017 \\
+            \hline
+            \bf Main Milestones : & \begin{Titemize}
+            	\Titem Inicio del Proyecto:16 de Agosto 2017
+                \Titem Plan Ejecutivo: 20 de Septiembre del 2017
+                \Titem Primer Entregable: 9 de Octubre del 2017
+                \Titem Segundo Entregable: 13 de Noviembre del 2017
+                \Titem Tercer Entregable: 12 de Diciembre del 2017
+            \end{Titemize} \\
+            \hline
+            \bf Proveedor : & Coffee Software\\
+            \hline
+            \bf Statement of Work: & Diseñar e implementar una solución en software para dispositivos móviles Android para resguardar información seleccionable por el usuario, así como el rastreo del dispositivo cuando este ha sido despojado.\\
+            \hline
+            \bf Objetivo : & Localizar un dispositivo móvil en movimiento, después de que se haya resguardado la información en el Drive del usuario y sea eliminada del dispositivo. \\
+            \hline 
+            \bf Entregables: & \begin{Titemize}
+            	\Titem C2-Propuesta Inicial
+                \Titem C4-Plan Ejecutivo (Incluye el C3-Project Charter)
+                \Titem E1-Módulos de Encuesta y de Configuración
+                \Titem E2-Módulos de Rastreo y de Backup
+                \Titem E3-Módulo de Zonas Más Delictivas y de Advertencia
+            \end{Titemize}\\
+            \hline
+            \bf Staff: & \begin{itemize}[label={\Gentsroom}]
+            \item Negrete Pimentel Fernando\begin{Titemize}
+            	\Titem \textbf{\Letter Correo:}\url{fnegrete9510@gmail.com}
+                \Titem \textbf{\Mobilefone Teléfono:}5524997051
+            \end{Titemize}
+            \item Miguel Ángel Ochoa Avendaño\begin{Titemize}
+            	\Titem \textbf{\Letter Correo:} \url{miguelochoa1992@gmail.com}
+                \Titem \textbf{\Mobilefone Teléfono:}5511378855
+            \end{Titemize}
+            \item Juan Manuel Balderas Sánchez\begin{Titemize}
+            	\Titem \textbf{\Letter Correo:}\url{juangpriv@gmail.com}
+                \Titem \textbf{\Mobilefone Teléfono:}5544741228
+            \end{Titemize}
+            \item Hector Manuel Tinoco Hernandez\begin{Titemize}
+            	\Titem \textbf{\Letter Correo:}\url{htinoco.hernandez@outlook.es}
+                \Titem \textbf{\Mobilefone Teléfono:}5578966406
+            \end{Titemize}
+            \item Francisco Isidoro Mera Torres\begin{Titemize}
+            	\Titem \textbf{\Letter Correo:}\url{fcomera.ipn@gmail.com}
+                \Titem \textbf{\Mobilefone Teléfono:}5577531553
+            \end{Titemize}
+            \end{itemize}\\
+            \hline
+            \bf Ubicación: & \begin{Titemize}
+            	\Titem Documentación: \href{www.overleaf.com}{Overleaf}
+                \Titem Código: \href{https://github.com/JuanBalderas/RecoverApp}{Git}
+            \end{Titemize}\\
+            \hline
+		\end{longtable}%
+	\end{center}
+	}
+
+%Firmas
+\newcommand{\makeFirmas}{
+		\begin{longtable}{| p{0.35\textwidth} | p{0.35\textwidth} |}%
+		
+			\hline
+			\rowcolor{sectionColor}\multicolumn{2}{c}{\bf\color{white}{Firmas}}\\
+			\hline
+			\endhead
+			\begin{center}\bf Líder del Proyecto\end{center}&\begin{center}\bf Aprueba\end{center}\\
+			&\\ &\\
+			\hrule & \hrule\\
+			\begin{center}\varLider\end{center}&\begin{center}\varAprueba\end{center}\\
+			\hline
+			\end{longtable}}
+
+
+\newenvironment{solucion}[1]{%
+	\subsubsection{#1}
+	\begin{longtable}{| p{0.15\textwidth}| p{0.7\textwidth}|}
+    \rowcolor{sectionColor}
+    \multicolumn{2}{|c|}{\bf\color{white}{#1}}
+  	\\ \hline
+	\endhead
+}{\end{longtable}}
+
+\newcommand{\solRow}[2]{\cellcolor{sectionColor}\bf\color{white}#1&#2\\\hline}
+
+\newcommand{\makeEndTable}{
+	\begin{longtable}{| p{0.1\textwidth}| p{0.1\textwidth}| p{0.3\textwidth}| p{0.15\textwidth}| p{0.15\textwidth}|}
+    \rowcolor{sectionColor}
+    \multicolumn{5}{|c|}{\bf \color{white}{Coffee Software}}\\\hline
+    \endhead
+    \rowcolor{tabla}
+    \color{white} Integrante & \color{white}Especialización & \color{white} Responsabilidades & \color{white} Contaco & \color{white} Disponibilidad \\ \hline
+    
+    \Gentsroom Francisco Isidoro Mera Torres & Analista y Líder de Proyecto & Analizará las posibles utilidades y modificaciones necesarias a la aplicación para agilizar el proceso de desarrollo a lo largo del semestre. Así mismo es reponsable del éxito o fracaso del proyecto.& \Mobilefone 55 77 53 15 53& Lunes a Viernes de 8:00 - 9:00 am y 10:00pm - 00:00am \\ \hline
+    \Gentsroom Negrete Pimentel Fernando & Líder de Diseño & Su objetivo será el diseño de pantallas, también  es responsable de administrar y planificar su implementación  y  desarrollar un plan de cambios.&\Mobilefone 55 24 99 70 51 &Lunes a Viernes de 10:00 am - 12:00 pm  \\\hline
+    \Gentsroom Juan Manuel Balderas Sánchez & Líder de Desarrollo &Tendrá la responsabilidad de planificar y administrar la implementación de casos de uso así como de supervisar estas actividades.& \Mobilefone 55 44 74 12 28 & Martes y Jueves de 12:00 pm - 13:30 pm\\\hline
+    \Gentsroom Miguel Ángel Ochoa Avendaño & Experto en Base de Datos&Se encargará de planificar e implementar la base de datos de cada uno de los módulos que tendrá la aplicación, así como de poder realizar cambios al modelo de información de acuerdo a las necesidades encontradas a lo largo del sistema. & \Mobilefone 55 11 37 88 55 & Lunes a Viernes de 8:00 pm a 9:30 pm \\\hline
+    \Gentsroom Tinoco Hernández Hector Manuel & Líder de Pruebas & Deberá realizar la planeación y administración de las pruebas que se deben realizar a la aplicación para determinar su calidad. & \Mobilefone 55 78 96 64 06 & Lunes a Viernes de 11:00 am - 1:30 pm\\ \hline
+	\end{longtable}
+
+}
+
+
+\newenvironment{Citemize}%
+{%
+	\begin{itemize}\addtolength{\itemsep}{-0.6\baselineskip}%
+}{%
+	\end{itemize}%
+}%
+
+\newcommand{\notacion}{\begin{center}\begin{tabular}[hbtp!]{|p{\textwidth}|}
+	\hline
+	\rowcolor{notacion}
+		Para la notación de casos de uso:
+		\begin{center}
+			\huge \textbf{CU-MM-II}
+		\end{center}
+		Donde:
+		\begin{Citemize}
+			\item \textbf{MM} Indica el módulo al que pertenece el caso de uso.
+			\item \textbf{II} Indica el identificador único asignado al caso de uso.
+		\end{Citemize}
+		
+		Para la notación de requerimientos:
+		\begin{center}
+			\huge \textbf{RX-MM-II}
+		\end{center}
+		Donde:
+		\begin{Citemize}
+			\item \textbf{X} Indica si el requerimiento es de usuario o de sistema.
+			\item \textbf{MM} Indica el módulo al que pertenece el requerimiento.
+			\item \textbf{II} Indica el identificador único asignado al requerimiento.
+		\end{Citemize}
+		\\
+	\hline
+\end{tabular}\end{center}}
+
+
+
+

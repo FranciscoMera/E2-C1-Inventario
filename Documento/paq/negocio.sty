@@ -1,0 +1,41 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{paq/negocio}[2017/06/24 Paquete para la incorporación de entornos de trabajo para el negocio]
+
+\RequirePackage{paq/riesgos}
+\RequirePackage{fdsymbol}
+
+\newenvironment{Glosario}{
+	\begin{description}
+}{\end{description}}
+
+\newcommand{\bTerm}[3]{	\item[\hypertarget{#1}{#2}:] #3}
+
+\newcommand{\refTerm}[2]{\hyperlink{#1}{#2}}
+
+\newenvironment{Entidad}[2]{
+	\subsection{Entidad #2}
+	\noindent\includegraphics[width=\textwidth]{Plantilla/iconos/EntityRule}
+	\hypertarget{#1}{}
+	\begin{longtable}{ | p{0.2\textwidth}| p{0.2\textwidth}| p{0.5\textwidth}|}
+	\hline
+	\rowcolor{sectionColor}
+	\multicolumn{3}{c}{\bf \color{white}Entidad #2}\\
+	\hline
+	\rowcolor{tabla}
+	\color{white} Atributo & \color{white} Tipo &\color{white}Descripción \\
+	\hline
+	\endhead
+}{\end{longtable}}
+
+\newcommand{\refEntity}[2]{\hyperlink{#1}{#2}}
+\newcommand{\entityItem}[4]{\hypertarget{#1}{#2} & #3 & #4 \\\hline}
+\newcommand{\refEntityItem}[2]{\hyperlink{#1}{#2}}
+
+\newcommand{\RelSection}{\rowcolor{sectionColor}\multicolumn{3}{c}{\bf\color{white} Relaciones}\\\hline
+\rowcolor{tabla} \color{white} Relación & \color{white} Entidad & \color{white} Rol \\\hline}
+
+\newcommand{\relItem}[3]{ #1 & #2 & #3 \\\hline}
+
+\newcommand{\Aggregation}{$\color{sectionColor}\Diamond-$ \textit{\small Agregación}}
+\newcommand{\Composition}{$\color{sectionColor}\mdblkdiamond-$ \textit{\small Composición}}
+\newcommand{\Generalization}{$\color{sectionColor}\triangleleft-$\textit{\small{Generalización}}}
