@@ -45,6 +45,52 @@ En este capítulo se presentan los diferentes requerimientos iniciales definidos
 		\end{ReqUser}
 		
 
+\section{Requerimientos iniciales del sistema}
+
+	\subsection{Dueño}
+		
+		\begin{ReqSist}
+
+			\reqSistItem{RS-MI01}{Gestión de Tiendas}{El  sistema debe proporcionar un mecanismo que permita agregar una nueva tienda(domicilio geográfico y capacidad) así como para la edición de está información.}{\alta}{}		
+
+			\reqSistItem{RS-MI02}{Solicitar Inventario}{El sistema debe proporcionar un mecanismo que permita conocer a los encargados de tienda cuando el dueño requiere de la realización de un inventario para conocer el estado de ventas de cada una de sus sucursales.}{\alta}{}
+
+	 		\reqSistItem{RS-MI03}{Administrar solicitudes de producto}{El sistema debe proporcionar un mecanismo que le permita al dueño visualizar y aprobar cada una de las solicitudes de producto realizadas por las tiendas con el fin de mantener surtidas sus sucursales.}{\alta}{}
+
+			\reqSistItem{RS-MI04}{Consultar Entregas}{El sistema debe proporcionar un mecanismo que le permita al dueño conocer cuando una entrega de mercancia llegue a una tienda y también conocer el estado de la misma con el fin de saber si el proveedor cumplió hasta el momento de entrega.}{\alta}{}
+
+			\reqSistItem{RS-MI05}{Gestión de Proveedores}{El sistema debe proporcionarle al dueño un mecanismo que le permita visualizar la información de contacto(teléfono, correo, dueño) de un proveedor y conocer cuantas entregas en sus tiendas han hecho así como realizar un análisis para conocer cual proveedor le ofrece el mejor precio al realiar el pédido de una solicitud de producto.}{\alta}{}
+
+		\end{ReqSist}
+
+	\subsection{Supervisor}
+
+		\begin{ReqSist}
+			
+			\reqSistItem{RS-MI06}{Gestión de Empleados}{El sistema debe proporcionar un mecanismo que permita la adición de nuevos empleados a la empresa con el fin de otorgarles un usario para la ejecución de operaciones, así  como para editar la inormación personal o eliminar todos los datos de aquellos empleados que dejaron de laborar para la empresa.}{\alta}{}
+
+			\reqSistItem{RS-MI07}{Gestionar Productos}{El sistema debe proporcionar un mecanismo que permita al supervisor agregar la información de un nuevo producto, editarla para su actualización o corrección de errores o eliminar aquellos productos que dejaron de surtirse.}{\alta}{}
+
+		\reqSistItem{RS-MI08}{Consultar Asistencia}{El sistema debe proprocionarle al supervisor un mecanismo que permita conocer cuando un encargado se ha retrasado al abrir una sucursal o de haberla cerrado antes.}{\alta}{}
+		\end{ReqSist}
+
+
+
+	 \subsection{Encargado de Tienda}
+
+	 	\begin{ReqSist}
+	
+			\reqSistItem{RS-MI09}{Gestión de Solicitudes de Producto}{El sistema debe proporcionar un mecanismo al encargado de una tienda para que vea las solicitudes que ha realizado, así como la opción de generar una nueva y editarla antes de que está sea enviada a revisión y aprobación.}{\alta}{}
+
+			\reqSistItem{RS-MI10}{Gestión de Inventarios}{El sistema debe proporcionar un mecanismo al encargado de una tienda para que pueda generar un inventario, notificando al dueño de está acción, para conocer el número de productos que se han vendido, se tienen en almácen o tienen daños que limitan su venta.}{\alta}{}	
+		
+			\reqSistItem{RS-MI11}{Gestión de Entrega de Productos}{El sistema debe proporcionar un mecanismo al encargado de una tienda que le permita conocer cuantas entregas han llegado a su tienda así como registrar la entrega de unasolicitud verificando la calidad de la mercancia y permitiendo registrar las incidencias correspondientes.}{\alta}{}
+
+			\reqSistItem{RS-MI12}{Pasar Asistencia}{El sistema debe proporcionar un mecanismo al encargado de una tienda para que pueda asegurar que se encuentra laborando en una tienda y en el turno designado para ello, así como pode reportar algún accidente por el cual haya sido retrasada su llegada a su sucursal.}{\alta}{}
+
+		\end{ReqSist}
+
+
 
 \section{Escenarios}
 
